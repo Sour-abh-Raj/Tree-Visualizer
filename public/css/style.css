@@ -1,0 +1,8 @@
+.foot-note {
+  position: static;
+  bottom: 0px;
+  left: 0;
+  width: 330px;
+  font-size: 11px;
+  color: #000;
+}

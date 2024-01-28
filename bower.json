@@ -1,0 +1,11 @@
+{
+  "name": "ARF",
+  "main": "index.html",
+  "homepage": "https://github.com/Sour-abh-Raj/Tree-Visualizer",
+  "authors": ["Sourabh Raj"],
+  "description": "A simple tree visualizer using D3.js",
+  "license": "",
+  "dependencies": {
+    "d3": "3.5.16"
+  }
+}
