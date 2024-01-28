@@ -2,7 +2,7 @@
   "name": "Tree-Visualizer",
   "version": "1.0.0",
   "description": "A simple tree visualizer using D3.js",
-  "main": "public/index.html",
+  "main": "./public/index.html",
   "scripts": {
     "postinstall": "copyfiles -f ./node_modules/d3/d3.min.js ./public/js/vendor/d3",
     "start": "cd ./public && npx http-server -p 8000 --cors"
@@ -16,7 +16,7 @@
   "bugs": {
     "url": "https://github.com/Sour-abh-Raj/Tree-Visualizer/issues"
   },
-  "homepage": "https://github.com/Sour-abh-Raj/Tree-Visualizer/",
+  "homepage": "https://github.com/Sour-abh-Raj/Tree-Visualizer",
   "devDependencies": {
     "copyfiles": "^1.0.0",
     "d3": "^3.5.16"
