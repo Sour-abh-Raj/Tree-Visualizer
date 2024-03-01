@@ -1,8 +1,62 @@
-.foot-note {
-  position: static;
-  bottom: 0px;
-  left: 0;
-  width: 330px;
-  font-size: 11px;
-  color: #000;
+Add any additional CSS styles for this page body {
+  font-family: monospace;
+  background-color: #1d1d1d;
+  color: #fff;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: #292929;
+}
+
+header h1,
+header h2 {
+  margin: 0;
+}
+
+nav {
+  display: flex;
+}
+
+nav a {
+  color: #ccc;
+  text-decoration: none;
+  padding: 10px;
+}
+
+nav a:hover {
+  color: #fff;
+}
+
+main {
+  padding: 20px;
+}
+
+footer {
+  text-align: center;
+  padding: 10px;
+  background-color: #292929;
+}
+
+.contact {
+  text-align: center;
+}
+
+.tag {
+  margin-top: 10px;
+}
+
+.tag a {
+  color: #ccc;
+  text-decoration: none;
+  padding: 10px;
+}
+
+.tag a:hover {
+  color: #fff;
 }
