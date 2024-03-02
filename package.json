@@ -4,8 +4,7 @@
   "description": "A tree visualizer with custom data.",
   "main": "index.js",
   "scripts": {
-    "postinstall": "copyfiles -f ./node_modules/d3/d3.min.js ./public/js/vendor/d3",
-    "dev": "cd ./public && npx http-server -p 8000 -c-1 --cors"
+    "dev": "npx http-server -p 8000 -c-1 --cors"
   },
   "repository": {
     "type": "git",
