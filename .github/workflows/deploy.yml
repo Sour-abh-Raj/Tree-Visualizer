@@ -23,7 +23,6 @@ jobs:
       - name: Build and copy files
         run: |
           npm run postinstall
-          cp -r node_modules/d3/d3.min.js public/js/vendor/d3
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
