@@ -1,4 +1,4 @@
-Add any additional CSS styles for this page body {
+body {
   font-family: monospace;
   background-color: #1d1d1d;
   color: #fff;
@@ -51,12 +51,24 @@ footer {
   margin-top: 10px;
 }
 
-.tag a {
-  color: #ccc;
-  text-decoration: none;
-  padding: 10px;
+.node {
+  cursor: pointer;
 }
 
-.tag a:hover {
-  color: #fff;
+.node circle {
+  cursor: pointer;
+  fill: #1d1d1d; /* Background color */
+  stroke: #fff; /* Border color */
+  stroke-width: 1.5px;
+}
+
+.node text {
+  font-size: 22px; /* Increased font size for better readability */
+  fill: #fff; /* Text color */
+}
+
+path.link {
+  fill: none;
+  stroke: #ccc;
+  stroke-width: 1px;
 }

@@ -32,21 +32,33 @@ d3.json("source.json", function (json) {
     }
   }
 
+  /*  function toggleAll(d) {
+    if (d.children) {
+      d.children.forEach(toggleAll);
+      toggle(d);
+    }
+  } */
   root.children.forEach(collapse);
   update(root);
 });
 
 function update(source) {
+  // var duration = d3.event && d3.event.altKey ? 5000 : 500;
+
+  // Compute the new tree layout.
   var nodes = tree.nodes(root).reverse();
 
+  // Normalize for fixed-depth.
   nodes.forEach(function (d) {
     d.y = d.depth * 180;
   });
 
+  // Update the nodes…
   var node = vis.selectAll("g.node").data(nodes, function (d) {
     return d.id || (d.id = ++i);
   });
 
+  // Enter any new nodes at the parent's previous position.
   var nodeEnter = node
     .enter()
     .append("svg:g")
@@ -63,10 +75,8 @@ function update(source) {
     .append("svg:circle")
     .attr("r", 1e-6)
     .style("fill", function (d) {
-      return d._children ? "#1d1d1d" : "#fff"; // Adjusted node fill color
-    })
-    .style("stroke", "#ccc") // Added stroke color
-    .style("stroke-width", "1.5px"); // Added stroke width
+      return d._children ? "lightsteelblue" : "#fff";
+    });
 
   nodeEnter
     .append("a")
@@ -85,9 +95,14 @@ function update(source) {
     .text(function (d) {
       return d.name;
     })
-    .style("fill", "#fff") // Adjusted text color
-    .style("font-size", "14px") // Adjusted font size
+    .style("fill: rgb(0, 0, 0)", function (d) {
+      return d.free ? "black" : "#999";
+    })
     .style("fill-opacity", 1e-6);
+
+  nodeEnter.append("svg:title").text(function (d) {
+    return d.description;
+  });
 
   // Transition nodes to their new position.
   var nodeUpdate = node
@@ -101,11 +116,12 @@ function update(source) {
     .select("circle")
     .attr("r", 6)
     .style("fill", function (d) {
-      return d._children ? "#1d1d1d" : "#fff"; // Adjusted node fill color
+      return d._children ? "lightsteelblue" : "#fff";
     });
 
   nodeUpdate.select("text").style("fill-opacity", 1);
 
+  // Transition exiting nodes to the parent's new position.
   var nodeExit = node
     .exit()
     .transition()
@@ -119,10 +135,12 @@ function update(source) {
 
   nodeExit.select("text").style("fill-opacity", 1e-6);
 
+  // Update the links…
   var link = vis.selectAll("path.link").data(tree.links(nodes), function (d) {
     return d.target.id;
   });
 
+  // Enter any new links at the parent's previous position.
   link
     .enter()
     .insert("svg:path", "g")
@@ -135,8 +153,10 @@ function update(source) {
     .duration(duration)
     .attr("d", diagonal);
 
+  // Transition links to their new position.
   link.transition().duration(duration).attr("d", diagonal);
 
+  // Transition exiting nodes to the parent's new position.
   link
     .exit()
     .transition()
@@ -147,12 +167,14 @@ function update(source) {
     })
     .remove();
 
+  // Stash the old positions for transition.
   nodes.forEach(function (d) {
     d.x0 = d.x;
     d.y0 = d.y;
   });
 }
 
+// Toggle children.
 function toggle(d) {
   if (d.children) {
     d._children = d.children;
